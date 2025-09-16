@@ -1,0 +1,11 @@
+numpy
+pandas
+scikit-learn
+xgboost
+scipy
+matplotlib
+requests
+beautifulsoup4
+python-dotenv
+tqdm
+psycopg2-binary

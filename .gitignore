@@ -1,0 +1,26 @@
+# Python / Jupyter
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+*.env
+.env*
+
+# Data & model artifacts (keep heavy/private out of Git)
+data/raw/
+data/processed/
+models/
+*.csv
+*.parquet
+*.xlsx
+*.pkl
+*.h5
+*.log
+
+# Allow tiny demo samples
+!data/sample/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
