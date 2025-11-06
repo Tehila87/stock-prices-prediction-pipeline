@@ -4,9 +4,8 @@ Event-aware stock-return prediction around earnings (Ridge/XGBoost) with LOEO va
 
 ## Optimisation
 
-The pipeline is optimised for clarity, speed, and credibility — not full reproducibility with heavy data.
-A lightweight demo version is included so that all scripts and notebooks can run locally without large datasets.
-Complementary Python code of a Nsdaq-100 clustering pipeline, scraping and sourcing data pipes via API, EDA notebooks and the complete datasets required to run the code end-to-end, is available on request.
+The pipeline is optimised for clarity, reproducibility, and credibility. To keep the repository lightweight, sample data is provided so the notebook can be executed locally without large downloads. Heavy, full-scale datasets are intentionally excluded because some computations and feature-engineering steps are expensive and time-consuming.
+Complementary Python assets — including a Nasdaq-100 clustering pipeline, API-based scraping/sourcing pipes, exploratory notebooks, and the complete datasets required to run the project end-to-end — are available on request.
 
 ## Structure
 
@@ -59,4 +58,5 @@ jupyter lab
 ## Summary
 This report presents the final modelling pipeline for predicting short-term returns for NVIDIA, Apple, and Google.
 It documents event-aware feature engineering, walk-forward validation, and trading strategies (Google, T+10 horizon).
+
 
