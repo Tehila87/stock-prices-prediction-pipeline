@@ -9,7 +9,7 @@ Complementary Python assets — including a Nasdaq-100 clustering pipeline, API-
 
 ## Structure
 
-* notebooks/01_main_modeling_pipeline.ipynb — clean, end-to-end run
+* notebooks/01_main_modeling_pipeline.ipynb & 02_clustering_pipeline_neighboring_companies.ipynb — clean, end-to-end run
 * data/sample/ — tiny demo CSVs (e.g., first 500 rows): master_data_df_demo.csv, ep_sentiment_new_demo.csv
 * figures/ — key plots and diagrams supporting the README/report
 * reports/ — final report (VPAnalytics_Final_Report_v1.0.pdf)
@@ -25,11 +25,22 @@ If you wish to experiment with full-scale data, custom integrations (e.g., from 
 
 ## Technical Overview
 
-The predictive modelling pipeline comprises:
+The main notebook builds the return-prediction pipeline and includes:
 - **(a)** pre-modelling transformations that de-bias, standardise, and prune the feature space to prevent mixed, redundant signals and noise; and
 - **(b)** two ready-to-run validation paths:
-  - **Walk-Forward Cross-Validation (WFCV)** for year-round predictions and
+  - **Walk-Forward Cross-Validation (WFCV)** for year-round predictions, and
   - **Leave-One-Earnings-Out (LOEO)** for earnings-window predictions.
+
+A complementary notebook (02_clustering_pipeline_neighboring_companies.ipynb) identifies structurally similar companies within the NASDAQ-100 universe so that some models can be trained on meaningful peer sets in addition to the focal stock. The flow includes:
+- **K-means regime split** – the universe is first split into broad risk / behaviour regimes (e.g. defensive / compounder vs. high-beta / momentum), so peers are selected within comparable regimes.
+- **Distance-based peer selection** – within each regime, nearest neighbours are chosen by Euclidean distance in the retained 6-feature, z-scored space, producing stable peer cohorts.
+
+*Before deployment, the candidate neighbours are filtered to technology and communications names, and a fixed top-5 peer set is kept per target (Google, NVIDIA, Apple).*
+
+This peer selection layer is what enables the three modelling paths described in the report:
+* **Path A – Peers only**: train on the peer panel only.
+* **Path B – Target only**: train only on the focal stock (e.g. Google).
+* **Path C – Target + Peers**: train on the union of the target and its peer cohort.
 
 ## Figures folder
 
@@ -58,5 +69,6 @@ jupyter lab
 ## Summary
 This report presents the final modelling pipeline for predicting short-term returns for NVIDIA, Apple, and Google.
 It documents event-aware feature engineering, walk-forward validation, and trading strategies (Google, T+10 horizon).
+
 
 
