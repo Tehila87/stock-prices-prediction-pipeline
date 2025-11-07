@@ -46,11 +46,23 @@ This peer selection layer is what enables the three modelling paths described in
 
 A selection of supporting visuals is highlighted inside the figures/ folder.
 These cover essential layers of the project, including:
-- **Conceptual framing** — problem_breakdown_fishbone_diagram.png
-- **Pipeline flow** — predictive_modeling_pipeline_diagram.png
-- **Feature dynamics** — gated_decayed_features_google_eps.png
-- **Model performance** — actual_vs_predicted, directional_hit_rate, performance_metrics
-- **Time series / validation visuals** — walk_forward_xgb_last_folds_google.png
+1. **Conceptual framing** — 1_problem_breakdown_fishbone_diagram.png
+   Shows the decomposition of rapid stock-price moves around earnings into external, market, and company drivers.
+2. **Pipeline flow** — 2_predictive_modeling__pipeline_diagram.png
+   End-to-end view of the Python modelling pipeline, including pre-modelling transforms and the two validation / prediction paths (WFCV, LOEO).
+3. **Feature dynamics** — 3_gated_decayed_features_google_eps.png
+   Illustrates how event-aware / decayed features are constructed around earnings to avoid signal leakage and overweighting.
+4. **Clustering & Nearest Neighbors** —
+   * 4a_neighboring_companies_PCA_scatterplot.png — PCA 2D map positioning Google, Apple, NVIDIA, and their nearest peers.
+   * 4a_neighboring_companies_PCA_loadings.png — PCA loadings highlighting the strongest differentiating features between companies.
+5. **Model & validation performance** — three companion charts:
+   * 5a_directional_hit_rate_across_models_year_round_pred.png — directional accuracy across model variants
+   * 5b_performance_metrics_across_models_google_t10.png — tabular / summary view of key metrics for the Google T+10 horizon
+   * 5c_walk_forward_xgb_lasts_folds_google.png — walk-forward cross-validation behaviour over the last folds
+6. **Predictions vs. actual / time-series** — two application views:
+* 6a_actual_vs_predicted_time_series_plot_xgb_pathB_google_t10.png — time-series comparison for Path B XGBoost
+* 5b_actual_vs_predicted_around_earnings_google_t10.png — zoomed earnings-window comparison
+
 Together, these figures provide a visual overview of the modelling architecture, validation logic, and predictive patterns.
 
 ## Methodology folder
@@ -67,8 +79,9 @@ pip install -r requirements.txt
 jupyter lab
 
 ## Summary
-This report presents the final modelling pipeline for predicting short-term returns for NVIDIA, Apple, and Google.
+This repository presents the final modelling pipeline for predicting short-term returns for NVIDIA, Apple, and Google.
 It documents event-aware feature engineering, walk-forward validation, and trading strategies (Google, T+10 horizon).
+
 
 
 
